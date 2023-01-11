@@ -13,8 +13,9 @@ const { PORT, JWT_SECRET } = process.env;
 //JWT VERIFICATION
 function createUser(req, res, next) {
     const data = {
-        id: user.id,
+        id: user.userid,
         username: user.username,
+        password: user.password,
         email: user.email,
     }
     return jwt.sign(data,JWT_SECRET,{});

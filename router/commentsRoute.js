@@ -9,12 +9,12 @@ const {
 } = require("../controllers/commentsController")
 
 //GET ALL COMMENTS
-router.route("/comment")
-.get(getAllComments)
+router.route("/")
+.get(getAllComments) //working
 .post(postComment);
 
 //GET COMMENT BY ID
-router.route("/comment/:commentid")
+router.route(":commentId")
 .get(getUserComment)
 .put(editUserComment)
 .delete(deleteUserComment);

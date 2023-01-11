@@ -34,3 +34,6 @@ test/integration/migrate/migration/
 
 node_modules/
 .env
+
+#individual files
+index2.js

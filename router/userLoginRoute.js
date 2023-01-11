@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const {verify, verifyAdmin} = require('../auth');
+const {verifyUser} = require('../auth');
 
 const {
  getAllUsers,
@@ -8,11 +8,11 @@ const {
 } = require('../controllers/userLoginController');
 
 router.route("/")
-    .get(verify, verifyAdmin, getAllUsers)
+    .get(verifyUser, getAllUsers)
     .post();
 
 router.route("/:userid")
-    .get(verify, getSingleUser)
+    .get(verifyUser, getSingleUser)
     .put()
 
 

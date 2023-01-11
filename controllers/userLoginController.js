@@ -4,6 +4,9 @@ const knex = require("knex")(require("../knexfile"));
 const { v4: uuid } = require("uuid");
 const auth = require('../auth');
 const {createAcessToken} = auth;
+const jwt = require('jsonwebtoken');
+const { JWT_SECRET } = process.env;
+
 
 //get all users
 module.exports.getAllUsers = (_req, res) => {
@@ -49,11 +52,13 @@ module.exports.registerUser = (req, res) => {
     const hashedPass = bcrypt.hashSync(req.body.password, 10);
 
     const newUser = {
-        id:uuid(),
+        userId:uuid(),
         ...req.body,
         password: hashedPass
     }
-
+    if(knex("users").filter((user) => user.userId === req.body.userid)){
+        return(res.status(400).send({message: `Username already exists. Please choose a different username`}))
+    }
     knex("users")
     .insert(newUser)
     .then((data) =>{
@@ -65,6 +70,9 @@ module.exports.registerUser = (req, res) => {
 
     //user login
     module.exports.loginUser = (req, res) => {
+        //auth
+
+
         knex("users")
         .where({username: req.body.username})
         .then((result) =>{

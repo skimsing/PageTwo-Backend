@@ -23,38 +23,10 @@ app.use(
     })
 );
 
-//JWT VERIFICATION
-function createUser(req, res, next) {
-    const data = {
-        userid: user.userid,
-        username: user.username,
-        password: user.password,
-        email: user.email,
-    }
-    return jwt.sign(data,JWT_SECRET,{});
-}   
-
-//CHECK JWT TOKEN
-function checkToken(req, res, next) {
-    const token = req.headers.authorization.split(' ')[1];
-    // check and verify JWT token
-    if (token && jwt.verify(token, JWT_SECRET)) {
-      req.user = jwt.decode(token); // attach decoded token to req object
-      next();
-    } else {
-      next();
-    }
-}
-
-// //CHECK USER ROLE 
-// function checkRole(req, res, next){
-//     if(user.role === "admin"){
-
-//     }
-// }
-
 app.use("/scores", scoresRoutes);
 app.use("/comments", commentsRoutes);
+app.use("/login", userLoginRoutes);
+app.use("/words", wordBankRoutes);
 
 app.listen(PORT, () => {
     console.log(`Server running at http://localhost:${PORT}`);

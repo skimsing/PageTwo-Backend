@@ -4,7 +4,7 @@ const { v4: uuid } = require("uuid");
 //ADD COMMENT 
 exports.postComment = (req, res) => {
     knex("comments")
-    .insert({ id: uuid4(), ...req.body })
+    .insert({ postId: uuid4(), ...req.body })
     .then(() => {
         res.status(201).send("comment posted");
     });
@@ -23,7 +23,7 @@ exports.getAllComments = (req, res) =>{
 //GET SINGLE USER COMMENT
 exports.getUserComment = (req, res) => {
     knex("comments")
-    .where("commentid",req.params.id)
+    .where("commentid",req.params.postId)
     .then((data) => {
         res.status(200).json(data);
       })
@@ -34,7 +34,7 @@ exports.getUserComment = (req, res) => {
 //EDIT COMMENT
 exports.editUserComment = (req, res) => {
     knex("comments")
-    .where("commentid",req.params.id)
+    .where("commentid",req.params.postId)
     .update(req.body)
     .then((data) => {
         res.status(200).json(data);
@@ -47,7 +47,7 @@ exports.editUserComment = (req, res) => {
 //DELETE SINGLE COMMENT
 exports.deleteUserComment = (req, res) => {
     knex("comments")
-    .where("commentid", req.params.id)
+    .where("commentid", req.params.postId)
     .del()
     .then((data) => {
         res.status(200).json(data);

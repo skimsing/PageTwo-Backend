@@ -4,7 +4,7 @@ const { v4: uuid } = require("uuid");
 //GET ALL SAVED WORDS
 exports.getAllWords = (req, res) => {
     knex("wordlist")
-    .where("userid", req.params.userid)
+    .where("userId", req.params.userId)
     .then((data) => {
         res.status(200).json(data);
     })
@@ -17,7 +17,7 @@ exports.getAllWords = (req, res) => {
 //GET SELECTED WORD
 exports.getSelectedWord = (req, res) => {
     knex("wordlist")
-    .where("userid", req.params.userid)
+    .where("userId", req.params.userId)
     .then((data) => {
         res.status(200).json(data);
     })
@@ -31,7 +31,7 @@ exports.getSelectedWord = (req, res) => {
 
 exports.addWord = (req, res) => {
     knex("wordlist")
-    .where("userid", req.params.userid)
+    .where("userId", req.params.userId)
     .then((data) => {
         res.status(200).json(data);
     })
@@ -43,7 +43,7 @@ exports.addWord = (req, res) => {
 //DELETE WORD
 exports.deleteWord = (req, res) => {
     knex("wordlist")
-    .where("word_id", req.params.word_id)
+    .where("wordId", req.params.wordId)
     .del()
     .then((data) => {
         res.status(200).json(data);

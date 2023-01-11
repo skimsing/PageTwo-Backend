@@ -28,7 +28,7 @@ exports.postScore = (req, res) => {
 //GET ALL USER SCORES
 exports.getAllUserScores = (req, res) => {
     knex("scores")
-    .where("userid", req.params.userid)
+    .where("userId", req.params.userId)
     .then((data) => {
         res.status(200).json(data);
     })
@@ -40,8 +40,8 @@ exports.getAllUserScores = (req, res) => {
 //GET SINGLE USER SCORE
 exports.getUserScore = (req, res) => {
     knex("scores")
-    .where("userid", req.params.userid)
-    .andWhere("gameid", req.params.gameid)
+    .where("userId", req.params.userId)
+    .andWhere("id", req.params.id)
     .then((data) => {
         res.status(200).json(data);
     })
@@ -52,8 +52,8 @@ exports.getUserScore = (req, res) => {
 //DELETE SINGLE SCORE
 exports.deleteUserScore = (req, res) => {
     knex("scores")
-    .where("userid", req.params.userid)
-    .andWhere("gameid", req.params.gameid)
+    .where("userId", req.params.userId)
+    .andWhere("id", req.params.id)
     .del()
     .then((data) => {
         res.status(200).json(data);

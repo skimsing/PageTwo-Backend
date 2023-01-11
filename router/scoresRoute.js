@@ -10,16 +10,16 @@ const {
 } = require("../controllers/scoresController")
 
 //ROUTES
-router.route("/game")
-.get(getAllScores)
+router.route("/")
+.get(getAllScores) //working
 .post(postScore);
 
 //ALL GAMES BY USER ID
-router.route("/game/:userid")
+router.route("/:userId")
 .get(getAllUserScores);
 
 //SINGLE SCORES BY GAME ID
-router.route("/game/:userid/:gameid")
+router.route("/:userId/:gameId")
 .get(getUserScore)
 .delete(deleteUserScore);
 

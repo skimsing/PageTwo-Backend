@@ -4,7 +4,8 @@
  */
  exports.up = function(knex) {
     return knex.schema.createTable('comments', function(table){
-        table.string('id');
+        table.string('postId');
+        table.string('userId');
         table.string('name').notNullable();
         table.longtext('comment').notNullable();
         table.timestamp('date').defaultTo(knex.fn.now());

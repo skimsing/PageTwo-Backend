@@ -8,11 +8,11 @@ const {
     deleteWord
 } = require("../controllers/wordsController");
 
-router.route("/:userid/words")
+router.route("/:userId")
 .get(getAllWords)
 .post(addWord);
 
-router.route("/:userid/words/:wordid")
+router.route("/:userId/:wordId")
 .get(getSelectedWord)
 .delete(deleteWord);
 
