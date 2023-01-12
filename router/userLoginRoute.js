@@ -4,16 +4,20 @@ const {verifyUser} = require('../auth');
 const {
  getAllUsers,
  getUserProfile,
- getSingleUser
+ getSingleUser,
+ registerUser,
+ loginUser
 } = require('../controllers/userLoginController');
 
 router.route("/")
-    .get(verifyUser, getAllUsers)
-    .post();
+    .get(getAllUsers)
+    .post(loginUser);
+
+router.route("/create")
+    .post(registerUser);
 
 router.route("/:userid")
-    .get(verifyUser, getSingleUser)
-    .put()
+    .get(getSingleUser);    
 
 
 module.exports = router;

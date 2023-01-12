@@ -1,4 +1,7 @@
 const router = require("express").Router();
+const {verifyUser} = require('../auth');
+
+
 //GET CONTROLLERS
 const {
     postComment,
@@ -14,7 +17,7 @@ router.route("/")
 .post(postComment);
 
 //GET COMMENT BY ID
-router.route(":commentId")
+router.route("/:postId")
 .get(getUserComment)
 .put(editUserComment)
 .delete(deleteUserComment);

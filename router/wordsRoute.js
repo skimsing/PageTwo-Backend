@@ -1,4 +1,6 @@
 const router = require("express").Router();
+const {verifyUser} = require('../auth');
+
 
 //GET ALL CONTROLLERS
 const {
@@ -11,6 +13,9 @@ const {
 router.route("/:userId")
 .get(getAllWords)
 .post(addWord);
+
+// router.route("/:userId/add")
+
 
 router.route("/:userId/:wordId")
 .get(getSelectedWord)
