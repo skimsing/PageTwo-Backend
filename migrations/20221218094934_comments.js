@@ -8,6 +8,7 @@
         table.string('userId');
         table.string('name').notNullable();
         table.longtext('comment').notNullable();
+        // table.date('date').defaultTo(knex.fn.now);
         table.timestamp('date').defaultTo(knex.fn.now());
     });
 };

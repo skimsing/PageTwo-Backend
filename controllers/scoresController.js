@@ -15,7 +15,7 @@ exports.getAllScores = (req, res) => {
 //POST SINGLE SCORE
 exports.postScore = (req, res) => {
     knex("scores")
-    .insert({ id: uuid4(), ...req.body })
+    .insert({ gameId: uuid(), ...req.body })
     .then(() => {
         res.status(201).send("scores posted");
     })
